@@ -74,7 +74,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="hfeed">
+<div id="page" class="hfeed" data-role="page">
 	<header id="branding" role="banner">
 			<nav id="access" role="navigation">
 				<?php /*  Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff. */ ?>

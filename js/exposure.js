@@ -1,5 +1,5 @@
 /*
-* MBP - Mobile boilerplate helper functions
+ * MBP - Mobile boilerplate helper functions
  */
 (function(document){
  
@@ -35,35 +35,51 @@
 
 
 });
-
-var $j = jQuery();
-
 jQuery( function() {
-	 
+	
+	var current_url = $(location).attr('href');
+
+	
 	jQuery('body').bind( 'taphold', function( e ) {
-		// alert( 'You tapped and held!' );
+		$('#next_post_link').attr('refresh');
+		$('#previous_post_link').attr('refresh');
+		var next_url = $('#next_post_link').attr('href');
+		var previous_url = $('#previous_post_link').attr('href');
+		alert(next_url  + ' --- ' + previous_url);
 		e.stopImmediatePropagation();
 		return false;
 	} ); 
  
 	jQuery('body').bind( 'swipeleft', function( e ) {
+		$('#next_post_link').attr('refresh');
+		$('#previous_post_link').attr('refresh');
+		var next_url = $('#next_post_link').attr('href');
 		var previous_url = $('#previous_post_link').attr('href');
-		alert( 'You swiped left! Target URL: ' + previous_url );
+		console.log("Swiped Ledt: " + next_url  + ' --- ' + previous_url);
+		
 		if (undefined != previous_url) {
-			$.mobile.changePage( previous_url,"slide",true);
+			$('#nav-above').remove();   
+        	$.mobile.changePage( previous_url,"slide", true);
+        	e.stopImmediatePropagation();
+    		return false;
 		}
-		e.stopImmediatePropagation();
-		return false;
+		
 	} ); 
  
 	jQuery('body').bind( 'swiperight', function( e ) {
-        var next_url = $('#next_post_link').attr('href');
-        alert( 'You swiped right! Target URL: ' + next_url );
+		$('#next_post_link').attr('refresh');
+		$('#previous_post_link').attr('refresh');
+		var next_url = $('#next_post_link').attr('href');
+		var previous_url = $('#previous_post_link').attr('href');
+		console.log("Swiped Right: " + next_url  + ' --- ' + previous_url);
+       
         if (undefined != next_url) {
+        	$('#nav-above').remove();    
         	$.mobile.changePage( next_url, "slide", true);
+        	e.stopImmediatePropagation();
+    	    return false;
         }
-	    e.stopImmediatePropagation();
-	    return false;
+	    
 	} ); 
 	
 	jQuery('.entenlogo').click(function() {
@@ -71,5 +87,8 @@ jQuery( function() {
 	});
 	
   
-} );
+} ); 
+
+
+
 
