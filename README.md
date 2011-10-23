@@ -2,7 +2,7 @@
 
 The Exposure WordPress Theme is a photography theme that should work on desktop browsers and iPads using jQuery Mobile. 
 
-A **demo** is available at <a href="http://www.ententour.de">www.ententour.de</a>.
+A **demo** is available at <a href="http://www.ententour.de">www.ententour.de .
 
 ### To Do
 
