@@ -41,5 +41,23 @@
 
 <?php wp_footer(); ?>
 
+<?php 
+// Add Piwik only on Ententour Live-Site
+// This should be changed on your install of the Exposure Theme installation
+if ($_SERVER['SERVER_NAME'] == 'xxx.ententour.de') : ?>
+<!-- Piwik --> 
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://statistik.codelounge.de/" : "http://statistik.codelounge.de/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+try {
+  var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 5);
+  piwikTracker.trackPageView();
+  piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script><noscript><p><img src="http://statistik.codelounge.de/piwik.php?idsite=5" style="border:0" alt="" /></p></noscript>
+<!-- End Piwik Tracking Code -->
+<?php endif; ?>
+
 </body>
 </html>
