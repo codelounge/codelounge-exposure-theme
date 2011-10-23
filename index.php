@@ -1,35 +1,36 @@
 <?php
 /**
  * The main template file.
- *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
- *
- * @package WordPress
- * @subpackage Twenty_Eleven
+ * 
+ * @package Exposure
+ * @since 0.1.0
+ * @author Thomas Stein
  */
 
 get_header(); ?>
 
-		<div id="primary">
-			<div id="container" role="main">
-			<?php if (is_home() ) {
-					query_posts(array('posts_per_page' => 1));
-				} ?>
+	<?php 
+	// Create a custom query to only show the latest post on the frontpage
+	$query = new WP_Query(array(
+		'post_type' => 'post',
+		'posts_per_page' => 1,
+		'status' => 'publish'
+	));
+	// printr($query);
+	?>
+
+	<div id="primary">
+		<div id="container" role="main">
 				
-			<?php if ( have_posts() ) : ?>
+		<?php if ( $query->have_posts() ) : ?>
+				
+			<?php /* Start the Loop */ ?>
+				<?php while ( $query->have_posts() ) : $query->the_post(); ?>
+				
+					<?php get_template_part( 'content' ); ?>
 
 				
-
-				
-				<?php /* Start the Loop */ ?>
-				<?php while ( have_posts() ) : the_post(); ?>
-				
-					<?php get_template_part( 'content', 'single' ); ?>
-
+					
 				<?php endwhile; ?>
 
 				<?php //exposure_content_nav( 'nav-below' ); ?>
@@ -47,10 +48,9 @@ get_header(); ?>
 					</div><!-- .entry-content -->
 				</article><!-- #post-0 -->
 
-			<?php endif; ?>
+		<?php endif; ?>
 
-			</div><!-- #content -->
-		</div><!-- #primary -->
-
+		</div><!-- #content -->
+	</div><!-- #primary -->
 
 <?php get_footer(); ?>

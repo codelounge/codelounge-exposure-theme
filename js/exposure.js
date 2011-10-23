@@ -55,7 +55,7 @@ jQuery( function() {
 		$('#previous_post_link').attr('refresh');
 		var next_url = $('#next_post_link').attr('href');
 		var previous_url = $('#previous_post_link').attr('href');
-		console.log("Swiped Ledt: " + next_url  + ' --- ' + previous_url);
+		// console.log("Swiped Ledt: " + next_url  + ' --- ' + previous_url);
 		
 		if (undefined != previous_url) {
 			$('#nav-above').remove();   
@@ -71,7 +71,7 @@ jQuery( function() {
 		$('#previous_post_link').attr('refresh');
 		var next_url = $('#next_post_link').attr('href');
 		var previous_url = $('#previous_post_link').attr('href');
-		console.log("Swiped Right: " + next_url  + ' --- ' + previous_url);
+		// console.log("Swiped Right: " + next_url  + ' --- ' + previous_url);
        
         if (undefined != next_url) {
         	$('#nav-above').remove();    

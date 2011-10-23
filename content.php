@@ -2,12 +2,11 @@
 /**
  * The default template for displaying content
  *
- * @package WordPress
- * @subpackage Twenty_Eleven
- * @since Twenty Eleven 1.0
+ * @package Exposure
+ * @since 0.1.0
+ * @author Thomas Stein
  */
 ?>
-
 	<?php exposure_content_nav( 'nav-above' ); ?>
 	
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
