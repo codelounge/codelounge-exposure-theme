@@ -48,7 +48,7 @@ jQuery( function() {
  
 	jQuery('body').bind( 'swipeleft', function( e ) {
 		var previous_url = $('#previous_post_link').attr('href');
-		// alert( 'You swiped left! Target URL: ' + previous_url );
+		alert( 'You swiped left! Target URL: ' + previous_url );
 		if (undefined != previous_url) {
 			$.mobile.changePage( previous_url,"slide",true);
 		}
@@ -58,7 +58,7 @@ jQuery( function() {
  
 	jQuery('body').bind( 'swiperight', function( e ) {
         var next_url = $('#next_post_link').attr('href');
-        // alert( 'You swiped right! Target URL: ' + next_url );
+        alert( 'You swiped right! Target URL: ' + next_url );
         if (undefined != next_url) {
         	$.mobile.changePage( next_url, "slide", true);
         }

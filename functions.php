@@ -112,10 +112,10 @@ function exposure_setup() {
 	// We'll be using post thumbnails for custom header images on posts and pages.
 	// We want them to be the size of the header image that we just defined
 	// Larger images will be auto-cropped to fit, smaller ones will be ignored. See header.php.
-	set_post_thumbnail_size( HEADER_IMAGE_WIDTH, HEADER_IMAGE_HEIGHT, true );
+	// set_post_thumbnail_size( HEADER_IMAGE_WIDTH, HEADER_IMAGE_HEIGHT, true );
 
 	// Add Twenty Eleven's custom image sizes
-	add_image_size( 'large-feature', HEADER_IMAGE_WIDTH, HEADER_IMAGE_HEIGHT, true ); // Used for large feature (header) images
+	add_image_size( 'large-feature', 1024, 1024, false ); // Used for large feature (header) images
 	add_image_size( 'small-feature', 500, 300 ); // Used for featured posts if a large-feature doesn't exist
 	add_image_size( 'fullscreen-landscape', 1024, 1024, true);
 
@@ -381,3 +381,56 @@ function exposure_body_classes( $classes ) {
 }
 add_filter( 'body_class', 'exposure_body_classes' );
 
+/**
+* Show's a formated version of thr print_r() function
+*
+* @param mixed $mVar Variable to be displayed
+*/
+function printR($mVar, $sOutput_file=null)
+{
+	// Array of variables
+	$aVars = array($mVar);
+	if(func_num_args() > 2)
+	{
+		for($i = 2; $i < func_num_args(); $i++)
+		{
+			$aVars[] = func_get_arg($i);
+		}
+	}
+
+	// output
+	foreach($aVars as $mVar)
+	{
+		if(is_null($sOutput_file))
+		{
+			// output as html
+			echo "<pre style='text-align: left;font-size: larger; border: 2px dashed #FF0000;background-color: #FFF; color: #000;'>";
+			$mVar = print_r($mVar, true);
+			$mVar = preg_replace("!(.*)\[(.*)\]( => .*)!"                           , "\\1<span style='color: #f00;'>[\\2]</span>\\3", $mVar);
+			$mVar = preg_replace("!(.*) => ([a-zA-Z_0-9\-]+ Object\s+)!iU"          , "\\1 => <span style='color: #8232BF; font-weight: bold;'>\\2</span>", $mVar);
+			$mVar = preg_replace("!([a-zA-Z_0-9\-]+ Object\s)!"                     , "<span style='color: #8232BF; font-weight: bold;'>\\1</span>", $mVar);
+			$mVar = preg_replace("!(.*) => ([0-9\.]+\s)!"                           , "\\1 => <span style='color: #DC4FD7;'>\\2</span>", $mVar);
+			$mVar = preg_replace("!(.*) => (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\s)!", "\\1 => <span style='color: #0056E4;'>\\2</span>", $mVar);
+			$mVar = preg_replace("!(.*) => (\d{4}-\d{2}-\d{2}\s)!"                  , "\\1 => <span style='color: #0056E4;'>\\2</span>", $mVar);
+			$mVar = preg_replace("!(.*) => (\d{2}:\d{2}:\d{2}\s)!"                  , "\\1 => <span style='color: #0056E4;'>\\2</span>", $mVar);
+			$mVar = preg_replace("!(.*) => (\s{2,})!"                               , "\\1 => <span style='color: #FFA810;'>NULL OR \"\"</span>\\2", $mVar);
+			$mVar = preg_replace("!(.*) => ([a-fA-F0-9]{32})(\s+)!"                 , "\\1 => <span style='color: #119E2B;'>\\2</span>\\3", $mVar);
+			echo $mVar;
+			echo "</pre>";
+		}
+		else
+		{
+			// output to file
+			if($sOutput_file === true)
+			{
+				$sOutput_file = 'debug.txt';
+			}
+
+			$rFp = fopen($sOutput_file, 'a');
+			fwrite($rFp, print_r($mVar, true));
+			fwrite($rFp, "\n");
+			fclose($rFp);
+		}
+	}
+
+}
