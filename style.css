@@ -178,6 +178,17 @@ small, .small { font-size: 10px; }
     background-size: 22px 27px;
 }
 
+#radar .ui-icon {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("images/icons/73-radar.png");
+    background-origin: padding-box;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 22px 27px;
+}
+
 .entegut {
 	font-size: 16px;
 	font-family: Lobster, sans-serif;
