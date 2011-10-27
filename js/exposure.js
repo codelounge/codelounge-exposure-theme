@@ -47,14 +47,17 @@ If not, see: <http://www.gnu.org/licenses/>.
 });
 jQuery( function() {
 
-	$("a[rel=lightbox]").fancybox();
+	$("a.facebox").fancybox();
+	//$("a.fancybox").prettyPhoto({
+	//	social_tools: false
+	//});
 	
 	jQuery('.entenlogo').click(function() {
 		$('.entenlogo').hide();
 	});
 
 	var current_url = $(location).attr('href');
-
+	//console.log($(location).attr('href'));
 	jQuery('body').bind( 'taphold', function( e ) {
 		//$('#next_post_link').attr('refresh');
 		//$('#previous_post_link').attr('refresh');

@@ -56,6 +56,8 @@ If not, see: <http://www.gnu.org/licenses/>.
 <link rel="stylesheet" type="text/css" media="all" href="<?php echo get_template_directory_uri(); ?>/css/jquery.mobile-1.0rc2.css" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php echo get_template_directory_uri(); ?>/css/fancybox/jquery.fancybox-1.3.4.css" />
+<link rel="stylesheet" type="text/css" media="all" href="<?php echo get_template_directory_uri(); ?>/css/facebox/facebox.css" />
+<link rel="stylesheet" type="text/css" media="all" href="<?php echo get_template_directory_uri(); ?>/css/prettyPhoto/prettyPhoto.css" />
 
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <!--[if lt IE 9]>
@@ -65,7 +67,8 @@ If not, see: <http://www.gnu.org/licenses/>.
 <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.mobile-1.0rc2.min.js" type="text/javascript"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/exposure.js" type="text/javascript"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.fancybox-1.3.4.pack.js" type="text/javascript"></script>
-
+<script src="<?php echo get_template_directory_uri(); ?>/js/facebox.js" type="text/javascript"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.prettyPhoto.js" type="text/javascript"></script>
 
 <!-- Mobile Devices -->
 <link rel="apple-touch-icon" href="<?php bloginfo('template_directory'); ?>/images/Icon-72.png" />
@@ -89,7 +92,7 @@ If not, see: <http://www.gnu.org/licenses/>.
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="hfeed" data-role="page">
+<div id="page" class="hfeed" data-role="page" onload="setupZoom()">
 	<header id="branding" role="banner">
 			<nav id="access" role="navigation">
 				<?php /*  Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff. */ ?>

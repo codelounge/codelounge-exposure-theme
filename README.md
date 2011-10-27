@@ -12,7 +12,7 @@ A **demo** is available at <a href="http://www.ententour.de">www.ententour.de .
 
 ### Notices
 
-  * Using the <a href="http://wordpress.org/extend/plugins/geosm2/">GeOSM2 Plugin</a> to display maps add `target="_blank"` to the `$before_url` within the widget code.
+  * Using the <a href="http://wordpress.org/extend/plugins/geosm2/">GeOSM2 Plugin</a> to display maps add `target="_blank"` to the `$before_url` within the widget code (Plugin Version: 0.8.3, Line 274).
 
 ### Weblinks
 
