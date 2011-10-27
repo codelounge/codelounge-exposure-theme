@@ -1,4 +1,14 @@
 /*
+Copyright: © 2011 Thomas Stein, CodeLounge.de
+<mailto:info@codelounge.de> <http://www.codelounge.de/>
+
+Released under the terms of the GNU General Public License.
+You should have received a copy of the GNU General Public License,
+along with this software. In the main directory, see: licence.txt
+If not, see: <http://www.gnu.org/licenses/>.
+*/
+
+/*
  * MBP - Mobile boilerplate helper functions
  */
 (function(document){
@@ -41,24 +51,25 @@ jQuery( function() {
 
 	
 	jQuery('body').bind( 'taphold', function( e ) {
-		$('#next_post_link').attr('refresh');
-		$('#previous_post_link').attr('refresh');
+		//$('#next_post_link').attr('refresh');
+		//$('#previous_post_link').attr('refresh');
+		$('#page').page('refresh');
 		var next_url = $('#next_post_link').attr('href');
 		var previous_url = $('#previous_post_link').attr('href');
-		alert(next_url  + ' --- ' + previous_url);
+		console.log(next_url  + ' --- ' + previous_url);
 		e.stopImmediatePropagation();
 		return false;
 	} ); 
  
 	jQuery('body').bind( 'swipeleft', function( e ) {
+		$('#nav-above').attr('refresh');
 		$('#next_post_link').attr('refresh');
 		$('#previous_post_link').attr('refresh');
 		var next_url = $('#next_post_link').attr('href');
 		var previous_url = $('#previous_post_link').attr('href');
-		// console.log("Swiped Ledt: " + next_url  + ' --- ' + previous_url);
+		console.log("Swiped Left: " + next_url  + ' --- ' + previous_url);
 		
 		if (undefined != previous_url) {
-			$('#nav-above').remove();   
         	$.mobile.changePage( previous_url,"slide", true);
         	e.stopImmediatePropagation();
     		return false;
@@ -67,14 +78,14 @@ jQuery( function() {
 	} ); 
  
 	jQuery('body').bind( 'swiperight', function( e ) {
+		$('#nav-above').attr('refresh');
 		$('#next_post_link').attr('refresh');
 		$('#previous_post_link').attr('refresh');
 		var next_url = $('#next_post_link').attr('href');
 		var previous_url = $('#previous_post_link').attr('href');
-		// console.log("Swiped Right: " + next_url  + ' --- ' + previous_url);
+		console.log("Swiped Right: " + next_url  + ' --- ' + previous_url);
        
         if (undefined != next_url) {
-        	$('#nav-above').remove();    
         	$.mobile.changePage( next_url, "slide", true);
         	e.stopImmediatePropagation();
     	    return false;

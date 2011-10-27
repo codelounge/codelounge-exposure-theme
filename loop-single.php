@@ -1,4 +1,14 @@
 <?php
+/*
+Copyright: © 2011 Thomas Stein, CodeLounge.de
+<mailto:info@codelounge.de> <http://www.codelounge.de/>
+
+Released under the terms of the GNU General Public License.
+You should have received a copy of the GNU General Public License,
+along with this software. In the main directory, see: licence.txt
+If not, see: <http://www.gnu.org/licenses/>.
+*/
+
 /**
  * The main template file.
  *
@@ -8,8 +18,9 @@
  * E.g., it puts together the home page when no home.php file exists.
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
- * @package WordPress
- * @subpackage Twenty_Eleven
+ * @package Exposure
+ * @author Thomas Stein
+ * @since 0.1.0
  */
 
 get_header(); ?>

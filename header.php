@@ -1,12 +1,23 @@
 <?php
+/*
+Copyright: © 2011 Thomas Stein, CodeLounge.de
+<mailto:info@codelounge.de> <http://www.codelounge.de/>
+
+Released under the terms of the GNU General Public License.
+You should have received a copy of the GNU General Public License,
+along with this software. In the main directory, see: licence.txt
+If not, see: <http://www.gnu.org/licenses/>.
+*/
+
 /**
  * The Header for our theme.
  *
  * Displays all of the <head> section and everything up till <div id="main">
  *
- * @package WordPress
- * @subpackage Twenty_Eleven
- * @since Twenty Eleven 1.0
+ * @package Exposure
+ * @author Thomas Stein
+ * @since 0.1.0
+ * 
  */
 ?><!DOCTYPE html>
 <!--[if IE 6]>

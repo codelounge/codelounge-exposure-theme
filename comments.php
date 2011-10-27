@@ -1,4 +1,14 @@
 <?php
+/*
+Copyright: © 2011 Thomas Stein, CodeLounge.de
+<mailto:info@codelounge.de> <http://www.codelounge.de/>
+
+Released under the terms of the GNU General Public License.
+You should have received a copy of the GNU General Public License,
+along with this software. In the main directory, see: licence.txt
+If not, see: <http://www.gnu.org/licenses/>.
+*/
+
 /**
  * The template for displaying Comments.
  *
@@ -7,9 +17,9 @@
  * handled by a callback to twentyten_comment which is
  * located in the functions.php file.
  *
- * @package WordPress
- * @subpackage Twenty_Ten
- * @since Twenty Ten 1.0
+ * @package Exposure
+ * @author Thomas Stein
+ * @since 0.1.0
  */
 ?>
 
