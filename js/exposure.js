@@ -46,7 +46,13 @@ If not, see: <http://www.gnu.org/licenses/>.
 
 });
 jQuery( function() {
+
+	$("a[rel=lightbox]").fancybox();
 	
+	jQuery('.entenlogo').click(function() {
+		$('.entenlogo').hide();
+	});
+
 	var current_url = $(location).attr('href');
 
 	jQuery('body').bind( 'taphold', function( e ) {
@@ -80,7 +86,7 @@ jQuery( function() {
  
 	jQuery('body').bind( 'swiperight', function( e ) {
 		var next_url = $('.ui-page-active #next_post_link').attr('href');
-		var previous_url = $('.ui-page-active#previous_post_link').attr('href');
+		var previous_url = $('.ui-page-active #previous_post_link').attr('href');
 		console.log("Swiped Right: " + next_url  + ' --- ' + previous_url);
        
         if (undefined != next_url) {
@@ -96,9 +102,7 @@ jQuery( function() {
 	    
 	} ); 
 	
-	jQuery('.entenlogo').click(function() {
-		$(this).toggle();
-	});
+	
 	
   
 } ); 

@@ -55,6 +55,8 @@ If not, see: <http://www.gnu.org/licenses/>.
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lobster" type="text/css" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php echo get_template_directory_uri(); ?>/css/jquery.mobile-1.0rc2.css" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
+<link rel="stylesheet" type="text/css" media="all" href="<?php echo get_template_directory_uri(); ?>/css/fancybox/jquery.fancybox-1.3.4.css" />
+
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <!--[if lt IE 9]>
 <script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
@@ -62,6 +64,8 @@ If not, see: <http://www.gnu.org/licenses/>.
 <script src="<?php echo get_template_directory_uri(); ?>/js/jquery-1.6.4.min.js" type="text/javascript"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.mobile-1.0rc2.min.js" type="text/javascript"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/exposure.js" type="text/javascript"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.fancybox-1.3.4.pack.js" type="text/javascript"></script>
+
 
 <!-- Mobile Devices -->
 <link rel="apple-touch-icon" href="<?php bloginfo('template_directory'); ?>/images/Icon-72.png" />
