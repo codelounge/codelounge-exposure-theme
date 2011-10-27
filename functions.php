@@ -243,13 +243,13 @@ function exposure_content_nav( $nav_id ) {
 	
 		<nav id="<?php echo $nav_id; ?>" data-theme="a" data-position="inline" data-role="header" role="banner">
 			<?php if (false != $next) : ?>
-				<a href="<?php echo get_permalink($next->ID); ?>" id="next_post_link" data-theme="a" data-icon="arrow-l" data-direction="reverse" data-prefetch><?php echo $next->post_title;?></a> 
+				<a href="<?php echo get_permalink($next->ID); ?>" id="next_post_link" data-theme="a" data-icon="arrow-l"  data-prefetch data-direction="reverse"><?php echo $next->post_title;?></a> 
 			<?php endif ; ?>
 			
 			<h1 class="ui-title" tabindex="0" role="heading" aria-level="1"><?php the_title(); ?></h1>
 					
 			<?php if (false != $prev) : ?>
-				<a href="<?php echo get_permalink($prev->ID); ?>" id="previous_post_link" data-theme="a" data-icon="arrow-r" data-iconpos="right" class="ui-btn-right" data-prefetch><?php echo $prev->post_title;?></a> 
+				<a href="<?php echo get_permalink($prev->ID); ?>" id="previous_post_link" data-theme="a" data-icon="arrow-r" data-iconpos="right" class="ui-btn-right" data-prefetch ><?php echo $prev->post_title;?></a> 
 			<?php endif; ?>
 			
 		</nav>

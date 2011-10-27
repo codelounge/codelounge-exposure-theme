@@ -49,7 +49,6 @@ jQuery( function() {
 	
 	var current_url = $(location).attr('href');
 
-	
 	jQuery('body').bind( 'taphold', function( e ) {
 		//$('#next_post_link').attr('refresh');
 		//$('#previous_post_link').attr('refresh');
@@ -62,15 +61,17 @@ jQuery( function() {
 	} ); 
  
 	jQuery('body').bind( 'swipeleft', function( e ) {
-		$('#nav-above').attr('refresh');
-		$('#next_post_link').attr('refresh');
-		$('#previous_post_link').attr('refresh');
-		var next_url = $('#next_post_link').attr('href');
-		var previous_url = $('#previous_post_link').attr('href');
+		var next_url = $('.ui-page-active #next_post_link').attr('href');
+		var previous_url = $('.ui-page-active #previous_post_link').attr('href');
 		console.log("Swiped Left: " + next_url  + ' --- ' + previous_url);
 		
 		if (undefined != previous_url) {
-        	$.mobile.changePage( previous_url,"slide", true);
+        	//$.mobile.changePage( previous_url,"slide", true);
+        	$.mobile.changePage( previous_url, {
+        		transition: "slide",
+        		reverse: false,
+        		changeHash: true
+        	});	
         	e.stopImmediatePropagation();
     		return false;
 		}
@@ -78,15 +79,17 @@ jQuery( function() {
 	} ); 
  
 	jQuery('body').bind( 'swiperight', function( e ) {
-		$('#nav-above').attr('refresh');
-		$('#next_post_link').attr('refresh');
-		$('#previous_post_link').attr('refresh');
-		var next_url = $('#next_post_link').attr('href');
-		var previous_url = $('#previous_post_link').attr('href');
+		var next_url = $('.ui-page-active #next_post_link').attr('href');
+		var previous_url = $('.ui-page-active#previous_post_link').attr('href');
 		console.log("Swiped Right: " + next_url  + ' --- ' + previous_url);
        
         if (undefined != next_url) {
-        	$.mobile.changePage( next_url, "slide", true);
+        	//$.mobile.changePage( next_url, "slide", true);
+        	$.mobile.changePage( next_url, {
+        		transition: "slide",
+        		reverse: true,
+        		changeHash: true
+        	});	
         	e.stopImmediatePropagation();
     	    return false;
         }
