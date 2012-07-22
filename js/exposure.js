@@ -1,5 +1,15 @@
 /*
-* MBP - Mobile boilerplate helper functions
+Copyright: © 2011 Thomas Stein, CodeLounge.de
+<mailto:info@codelounge.de> <http://www.codelounge.de/>
+
+Released under the terms of the GNU General Public License.
+You should have received a copy of the GNU General Public License,
+along with this software. In the main directory, see: licence.txt
+If not, see: <http://www.gnu.org/licenses/>.
+*/
+
+/*
+ * MBP - Mobile boilerplate helper functions
  */
 (function(document){
  
@@ -35,41 +45,71 @@
 
 
 });
-
-var $j = jQuery();
-
 jQuery( function() {
-	 
+
+	$("a.facebox").fancybox();
+	//$("a.fancybox").prettyPhoto({
+	//	social_tools: false
+	//});
+	
+	jQuery('.entenlogo').click(function() {
+		$('.entenlogo').hide();
+	});
+
+	var current_url = $(location).attr('href');
+	//console.log($(location).attr('href'));
 	jQuery('body').bind( 'taphold', function( e ) {
-		// alert( 'You tapped and held!' );
+		//$('#next_post_link').attr('refresh');
+		//$('#previous_post_link').attr('refresh');
+		$('#page').page('refresh');
+		var next_url = $('#next_post_link').attr('href');
+		var previous_url = $('#previous_post_link').attr('href');
+		console.log(next_url  + ' --- ' + previous_url);
 		e.stopImmediatePropagation();
 		return false;
 	} ); 
  
 	jQuery('body').bind( 'swipeleft', function( e ) {
-		var previous_url = $('#previous_post_link').attr('href');
-		alert( 'You swiped left! Target URL: ' + previous_url );
+		var next_url = $('.ui-page-active #next_post_link').attr('href');
+		var previous_url = $('.ui-page-active #previous_post_link').attr('href');
+		console.log("Swiped Left: " + next_url  + ' --- ' + previous_url);
+		
 		if (undefined != previous_url) {
-			$.mobile.changePage( previous_url,"slide",true);
+        	//$.mobile.changePage( previous_url,"slide", true);
+        	$.mobile.changePage( previous_url, {
+        		transition: "slide",
+        		reverse: false,
+        		changeHash: true
+        	});	
+        	e.stopImmediatePropagation();
+    		return false;
 		}
-		e.stopImmediatePropagation();
-		return false;
+		
 	} ); 
  
 	jQuery('body').bind( 'swiperight', function( e ) {
-        var next_url = $('#next_post_link').attr('href');
-        alert( 'You swiped right! Target URL: ' + next_url );
+		var next_url = $('.ui-page-active #next_post_link').attr('href');
+		var previous_url = $('.ui-page-active #previous_post_link').attr('href');
+		console.log("Swiped Right: " + next_url  + ' --- ' + previous_url);
+       
         if (undefined != next_url) {
-        	$.mobile.changePage( next_url, "slide", true);
+        	//$.mobile.changePage( next_url, "slide", true);
+        	$.mobile.changePage( next_url, {
+        		transition: "slide",
+        		reverse: true,
+        		changeHash: true
+        	});	
+        	e.stopImmediatePropagation();
+    	    return false;
         }
-	    e.stopImmediatePropagation();
-	    return false;
+	    
 	} ); 
 	
-	jQuery('.entenlogo').click(function() {
-		$(this).toggle();
-	});
+	
 	
   
-} );
+} ); 
+
+
+
 

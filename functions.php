@@ -1,6 +1,16 @@
 <?php
+/*
+Copyright: © 2011 Thomas Stein, CodeLounge.de
+<mailto:info@codelounge.de> <http://www.codelounge.de/>
+
+Released under the terms of the GNU General Public License.
+You should have received a copy of the GNU General Public License,
+along with this software. In the main directory, see: licence.txt
+If not, see: <http://www.gnu.org/licenses/>.
+*/
+
 /**
- * Twenty Eleven functions and definitions
+ * Exposure functions and definitions
  *
  * Sets up the theme and provides some helper functions. Some helper functions
  * are used in the theme as custom template tags. Others are attached to action and
@@ -33,9 +43,9 @@
  *
  * For more information on hooks, actions, and filters, see http://codex.wordpress.org/Plugin_API.
  *
- * @package WordPress
- * @subpackage Twenty_Eleven
- * @since Twenty Eleven 1.0
+ * @package Exposure
+ * @author Thomas Stein
+ * @since 0.1.0
  */
 
 /**
@@ -117,6 +127,7 @@ function exposure_setup() {
 	// Add Twenty Eleven's custom image sizes
 	add_image_size( 'large-feature', 1024, 1024, false ); // Used for large feature (header) images
 	add_image_size( 'small-feature', 500, 300 ); // Used for featured posts if a large-feature doesn't exist
+	add_image_size( 'category-view', 300, 225, true);
 	add_image_size( 'fullscreen-landscape', 1024, 1024, true);
 
 	// Add additional css styles for mobile devices
@@ -227,23 +238,67 @@ add_action( 'widgets_init', 'exposure_widgets_init' );
  */
 function exposure_content_nav( $nav_id ) {
 	global $wp_query;
-
+	
 	$prev = get_previous_post();
 	$next = get_next_post(); ?>
 	
 		<nav id="<?php echo $nav_id; ?>" data-theme="a" data-position="inline" data-role="header" role="banner">
 			<?php if (false != $next) : ?>
-				<a href="<?php echo get_permalink($next->ID); ?>" id="next_post_link" data-theme="a" data-icon="arrow-l" data-direction="reverse" data-prefetch><?php echo $next->post_title;?></a> 
+				<a href="<?php echo get_permalink($next->ID); ?>" id="next_post_link" data-theme="a" data-icon="arrow-l"  data-prefetch data-direction="reverse"><?php echo $next->post_title;?></a> 
 			<?php endif ; ?>
 			
 			<h1 class="ui-title" tabindex="0" role="heading" aria-level="1"><?php the_title(); ?></h1>
-			
+					
 			<?php if (false != $prev) : ?>
 				<a href="<?php echo get_permalink($prev->ID); ?>" id="previous_post_link" data-theme="a" data-icon="arrow-r" data-iconpos="right" class="ui-btn-right" data-prefetch ><?php echo $prev->post_title;?></a> 
 			<?php endif; ?>
+			
 		</nav>
+		<div id="hidden_nav"></div>
+	<?php 
+	
+}
+
+/**
+* Display navigation to next/previous pages when applicable
+*/
+function exposure_category_nav( $nav_id ) {
+	global $wp_query;
+
+	
+	$next_posts_link = get_next_posts_link('&Auml;ltere Eintr&auml;ge');
+	$previous_posts_link = get_previous_posts_link('Neuere Eintr&auml;ge'); ?>
+	
+		<nav id="<?php echo $nav_id; ?>" data-theme="a" data-position="inline" data-role="header" role="banner">
+			<?php if (false != $previous_posts_link) : ?>
+				<?php echo $previous_posts_link; ?>
+			<?php endif; ?>
+			<h1><?php echo single_cat_title(); ?></h1>
+			<?php if (false != $next_posts_link) : ?>
+				<?php echo $next_posts_link; ?>
+			<?php endif; ?>
+			
+		</nav>
+		<div id="hidden_nav"></div>
 	<?php 
 }
+
+/**
+ * Add styling for jquery mobile to the next-posts-link
+ */
+function add_next_posts_link_attributes() {
+	return 'id="previous_post_link" data-theme="a" class="ui-btn-right" data-icon="arrow-r" data-iconpos="right" data-prefetch data-direction="reverse"';
+}
+add_filter('next_posts_link_attributes', 'add_next_posts_link_attributes' );
+
+/**
+* Add styling for jquery mobile to the previous-posts-link
+*/
+function add_previous_posts_link_attributes() {
+	return 'id="next_post_link" data-theme="a" data-icon="arrow-l"  data-prefetch';
+}
+add_filter('previous_posts_link_attributes', 'add_previous_posts_link_attributes' );
+
 
 /**
  * Return the URL for the first link found in the post content.

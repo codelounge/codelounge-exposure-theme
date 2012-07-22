@@ -1,35 +1,36 @@
 <?php
+/*
+Copyright: © 2011 Thomas Stein, CodeLounge.de
+<mailto:info@codelounge.de> <http://www.codelounge.de/>
+
+Released under the terms of the GNU General Public License.
+You should have received a copy of the GNU General Public License,
+along with this software. In the main directory, see: licence.txt
+If not, see: <http://www.gnu.org/licenses/>.
+*/
+
 /**
  * The main template file.
- *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
- *
- * @package WordPress
- * @subpackage Twenty_Eleven
+ * 
+ * @package Exposure
+ * @author Thomas Stein
+ * @since 0.1.0
  */
 
 get_header(); ?>
 
-		<div id="primary">
-			<div id="container" role="main">
-			<?php if (is_home() ) {
-					query_posts(array('posts_per_page' => 1));
-				} ?>
-				
-			<?php if ( have_posts() ) : ?>
+	<div id="primary">
+		<div id="container" role="main">
 
+		<?php if ( have_posts() ) : ?>
 				
-
-				
-				<?php /* Start the Loop */ ?>
+			<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>
 				
-					<?php get_template_part( 'content', 'single' ); ?>
+					<?php get_template_part( 'content' ); ?>
 
+				
+					
 				<?php endwhile; ?>
 
 				<?php //exposure_content_nav( 'nav-below' ); ?>
@@ -47,10 +48,9 @@ get_header(); ?>
 					</div><!-- .entry-content -->
 				</article><!-- #post-0 -->
 
-			<?php endif; ?>
+		<?php endif; ?>
 
-			</div><!-- #content -->
-		</div><!-- #primary -->
-
+		</div><!-- #content -->
+	</div><!-- #primary -->
 
 <?php get_footer(); ?>

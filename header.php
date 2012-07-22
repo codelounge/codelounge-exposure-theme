@@ -1,12 +1,23 @@
 <?php
+/*
+Copyright: © 2011 Thomas Stein, CodeLounge.de
+<mailto:info@codelounge.de> <http://www.codelounge.de/>
+
+Released under the terms of the GNU General Public License.
+You should have received a copy of the GNU General Public License,
+along with this software. In the main directory, see: licence.txt
+If not, see: <http://www.gnu.org/licenses/>.
+*/
+
 /**
  * The Header for our theme.
  *
  * Displays all of the <head> section and everything up till <div id="main">
  *
- * @package WordPress
- * @subpackage Twenty_Eleven
- * @since Twenty Eleven 1.0
+ * @package Exposure
+ * @author Thomas Stein
+ * @since 0.1.0
+ *
  */
 ?><!DOCTYPE html>
 <!--[if IE 6]>
@@ -42,15 +53,22 @@
 	?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lobster" type="text/css" />
-<link rel="stylesheet" type="text/css" media="all" href="<?php echo get_template_directory_uri(); ?>/css/jquery.mobile-1.0rc2.css" />
+<link rel="stylesheet" type="text/css" media="all" href="<?php echo get_template_directory_uri(); ?>/css/jquery.mobile-1.1.1.css" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
+<link rel="stylesheet" type="text/css" media="all" href="<?php echo get_template_directory_uri(); ?>/css/fancybox/jquery.fancybox-1.3.4.css" />
+<link rel="stylesheet" type="text/css" media="all" href="<?php echo get_template_directory_uri(); ?>/css/facebox/facebox.css" />
+<link rel="stylesheet" type="text/css" media="all" href="<?php echo get_template_directory_uri(); ?>/css/prettyPhoto/prettyPhoto.css" />
+
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <!--[if lt IE 9]>
 <script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
 <![endif]-->
-<script src="<?php echo get_template_directory_uri(); ?>/js/jquery-1.6.4.min.js" type="text/javascript"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.mobile-1.0rc2.min.js" type="text/javascript"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.mobile-1.1.1.min.js" type="text/javascript"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/exposure.js" type="text/javascript"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.fancybox-1.3.4.pack.js" type="text/javascript"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/facebox.js" type="text/javascript"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.prettyPhoto.js" type="text/javascript"></script>
 
 <!-- Mobile Devices -->
 <link rel="apple-touch-icon" href="<?php bloginfo('template_directory'); ?>/images/Icon-72.png" />
@@ -74,7 +92,7 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="hfeed">
+<div id="page" class="hfeed" data-role="page" onload="setupZoom()">
 	<header id="branding" role="banner">
 			<nav id="access" role="navigation">
 				<?php /*  Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff. */ ?>
